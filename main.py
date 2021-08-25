@@ -62,9 +62,6 @@ class Comment(db.Model):
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
 db.create_all()
-new_user = User(name='Favour Jam',email='jammoben@gmail.com',password=generate_password_hash('Djbanger123',method='pbkdf2:sha256',salt_length=8))
-db.session.add(new_user)
-db.session.commit()
 
 def admin_only(f):
     @wraps(f)
